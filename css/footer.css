@@ -89,13 +89,11 @@
   }
 
   .hero-card {
-    flex-direction: column;
-    padding: 24px;
-    text-align: center;
+    padding: 32px 20px;
   }
 
   .hero-title {
-    font-size: 1.8rem;
+    font-size: 2.1rem;
   }
 
   .hero-actions {
