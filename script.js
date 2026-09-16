@@ -1,5 +1,5 @@
 /**
- * BSS Therapy Service - Client-Side Interactive Entry Point
+ * Bett-r Support and Service - Client-Side Interactive Entry Point
  * =========================================================
  * Loads modular theme, validation, and form handler logic.
  */

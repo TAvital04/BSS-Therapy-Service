@@ -2,7 +2,7 @@
   "name": "bss-therapy-center",
   "version": "1.0.0",
   "private": true,
-  "description": "BSS Therapy Service - Better Support and Service Website",
+  "description": "Bett-r Support and Service Website",
   "type": "module",
   "scripts": {
     "dev": "vite",

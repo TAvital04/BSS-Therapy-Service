@@ -23,9 +23,9 @@
 
 .hero-title {
   font-family: var(--font-heading);
-  font-size: 2.3rem;
+  font-size: 1.8rem;
   font-weight: 800;
-  line-height: 1.15;
+  line-height: 1.2;
   color: var(--primary-dark);
   margin-bottom: 14px;
   letter-spacing: -0.02em;
@@ -96,7 +96,7 @@
   }
 
   .hero-title {
-    font-size: 2.1rem;
+    font-size: 1.55rem;
   }
 
   .hero-actions {
@@ -118,7 +118,7 @@
   }
 
   .hero-title {
-    font-size: 1.85rem;
+    font-size: 1.35rem;
   }
 
   .hero-image-wrapper {

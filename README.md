@@ -1,6 +1,6 @@
-# BSS Therapy Service Website
+# Bett-r Support and Service Website
 
-Production-ready, modern static website built for **BSS Therapy Service** (Better Support and Service) and configured for deployment on **GitHub Pages** with custom domain support and Web3Forms contact form integration.
+Production-ready, modern static website built for **Bett-r Support and Service** and configured for deployment on **GitHub Pages** with custom domain support and Web3Forms contact form integration.
 
 ---
 

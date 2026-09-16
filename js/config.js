@@ -1,5 +1,5 @@
 /**
- * Global Configuration for BSS Therapy Service Applications
+ * Global Configuration for Bett-r Support and Service Applications
  */
 export const CONFIG = {
   WEB3FORMS_ACCESS_KEY: "b4e445ae-e0fe-4925-86b0-100c84a08bd2",

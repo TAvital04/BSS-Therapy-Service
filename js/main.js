@@ -1,5 +1,5 @@
 /**
- * BSS Therapy Service - Application Main Entry Point
+ * Bett-r Support and Service - Application Main Entry Point
  */
 import { initFormHandler } from "./form-handler.js";
 

@@ -1,6 +1,6 @@
-# BSS Therapy Service - Site Specification & Documentation
+# Bett-r Support and Service - Site Specification & Documentation
 
-**Project:** BSS Therapy Service Website  
+**Project:** Bett-r Support and Service Website  
 **Hosting Target:** GitHub Pages (`/` root or `/docs`)  
 **Last Updated:** August 25, 2026
 
