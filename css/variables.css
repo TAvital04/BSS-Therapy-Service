@@ -44,8 +44,10 @@
   --space-2xl: 3rem; /* 48px */
   --space-3xl: 3.75rem; /* 60px */
   --space-4xl: 5rem; /* 80px */
-  --space-section: 6.75rem; /* 108px section spacing on desktop */
-  --space-section-mobile: 4.5rem; /* 72px section spacing on mobile */
+  --space-section: 3.5rem; /* 56px section bottom spacing to divider */
+  --space-section-mobile: 2.25rem; /* 36px section bottom spacing on mobile */
+  --space-divider-margin: 3.5rem; /* 56px margin from divider to header underneath */
+  --space-divider-margin-mobile: 2.25rem; /* 36px margin from divider to header underneath on mobile */
 
   /* Section Header Outset & Content Inset Tokens */
   --header-outset: -10px;

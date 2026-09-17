@@ -74,7 +74,7 @@
   .section-container + .emergency-section::before {
     width: 100px;
     height: 3px;
-    margin: 0 auto 32px auto;
+    margin: 0 auto var(--space-divider-margin-mobile) auto;
   }
 
   .section-banner {
