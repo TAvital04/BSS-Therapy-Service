@@ -182,9 +182,78 @@
                 <span class="error-msg" id="error-service" role="alert">Please select a specialty.</span>
               </div>
 
-              <!-- Resume Link Input -->
-              <div class="form-group full-width">
-                <label for="resume_link" class="form-label">Resume Link (Google Drive, LinkedIn, or Dropbox) *</label>
+              <!-- Resume Link Input with Google Drive Help Guide -->
+              <div class="form-group full-width" id="resume-group">
+                <div class="form-label-row">
+                  <label for="resume_link" class="form-label">Resume Link (Google Drive, LinkedIn, or Dropbox) *</label>
+                  <button
+                    type="button"
+                    class="help-pill-btn"
+                    id="resume-help-btn"
+                    aria-expanded="false"
+                    aria-controls="resume-help-guide"
+                  >
+                    <svg
+                      class="help-icon"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      width="15"
+                      height="15"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    <span>How to share via Google Drive?</span>
+                  </button>
+                </div>
+
+                <!-- Google Drive Instructions Drawer -->
+                <div
+                  class="help-guide-card u-hidden"
+                  id="resume-help-guide"
+                  role="region"
+                  aria-label="How to make your resume a shareable Google Drive link"
+                >
+                  <div class="help-guide-header">
+                    <span class="help-guide-title">How to share your resume with a link:</span>
+                    <button
+                      type="button"
+                      class="help-guide-close"
+                      id="resume-help-close"
+                      aria-label="Close instructions"
+                    >
+                      &times;
+                    </button>
+                  </div>
+                  <ol class="help-guide-steps">
+                    <li>
+                      <strong>Upload:</strong> Go to
+                      <a href="https://drive.google.com" target="_blank" rel="noopener noreferrer">Google Drive</a> and
+                      upload your resume (PDF or Word document).
+                    </li>
+                    <li>
+                      <strong>Share:</strong> Right-click your resume file and click <strong>Share</strong> &rarr;
+                      <strong>Share</strong>.
+                    </li>
+                    <li>
+                      <strong>Make Public:</strong> Under <em>General access</em>, change
+                      <em>&ldquo;Restricted&rdquo;</em> to <strong>&ldquo;Anyone with the link&rdquo;</strong> (ensure
+                      role is set to <em>Viewer</em>).
+                    </li>
+                    <li>
+                      <strong>Copy &amp; Paste:</strong> Click <strong>&ldquo;Copy link&rdquo;</strong> and paste the
+                      link in the field below.
+                    </li>
+                  </ol>
+                  <p class="help-guide-tip">
+                    <strong>Tip:</strong> Viewable links from LinkedIn, Dropbox, or OneDrive are also welcome!
+                  </p>
+                </div>
+
                 <input
                   type="url"
                   id="resume_link"

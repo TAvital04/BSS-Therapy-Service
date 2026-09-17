@@ -88,7 +88,6 @@
     margin-right: var(--content-inset-tablet);
   }
 
-
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
   }

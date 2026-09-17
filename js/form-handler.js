@@ -15,6 +15,27 @@ export function initFormHandler() {
 
   const isCareersForm = form.id === "careers-form";
 
+  // Resume Help Guide Toggle
+  const helpBtn = form.querySelector("#resume-help-btn");
+  const helpGuide = form.querySelector("#resume-help-guide");
+  const helpClose = form.querySelector("#resume-help-close");
+
+  if (helpBtn && helpGuide) {
+    helpBtn.addEventListener("click", () => {
+      const isExpanded = helpBtn.getAttribute("aria-expanded") === "true";
+      helpBtn.setAttribute("aria-expanded", String(!isExpanded));
+      helpGuide.classList.toggle("u-hidden", isExpanded);
+    });
+
+    if (helpClose) {
+      helpClose.addEventListener("click", () => {
+        helpBtn.setAttribute("aria-expanded", "false");
+        helpGuide.classList.add("u-hidden");
+        helpBtn.focus();
+      });
+    }
+  }
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -76,6 +97,10 @@ export function initFormHandler() {
           : "Thank you! Your appointment request has been submitted successfully.";
         showAlert(alertContainer, successMsg, "success");
         form.reset();
+        if (helpBtn && helpGuide) {
+          helpBtn.setAttribute("aria-expanded", "false");
+          helpGuide.classList.add("u-hidden");
+        }
       } else {
         showAlert(alertContainer, result.message || "Web3Forms submission error. Please try again.", "error");
       }
