@@ -42,7 +42,10 @@ export function initFormHandler() {
     try {
       // 3. Live Web3Forms Dispatch
       const formData = new FormData(form);
-      formData.set("access_key", CONFIG.WEB3FORMS_ACCESS_KEY);
+      const accessKey =
+        form.querySelector('input[name="access_key"]')?.value ||
+        (isCareersForm ? CONFIG.WEB3FORMS_CAREERS_KEY : CONFIG.WEB3FORMS_ACCESS_KEY);
+      formData.set("access_key", accessKey);
 
       const response = await fetch(CONFIG.WEB3FORMS_ENDPOINT, {
         method: "POST",
