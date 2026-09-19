@@ -15,37 +15,34 @@ export function initFormHandler() {
 
   const isCareersForm = form.id === "careers-form";
 
-  // Resume Help Guide Toggle
-  const helpBtn = form.querySelector("#resume-help-btn");
-  const helpGuide = form.querySelector("#resume-help-guide");
-  const helpClose = form.querySelector("#resume-help-close");
-
-  if (helpBtn && helpGuide) {
-    helpBtn.addEventListener("click", () => {
-      const isExpanded = helpBtn.getAttribute("aria-expanded") === "true";
-      helpBtn.setAttribute("aria-expanded", String(!isExpanded));
-      helpGuide.classList.toggle("u-hidden", isExpanded);
-    });
-
-    if (helpClose) {
-      helpClose.addEventListener("click", () => {
-        helpBtn.setAttribute("aria-expanded", "false");
-        helpGuide.classList.add("u-hidden");
-        helpBtn.focus();
-      });
-    }
+  if (isCareersForm) {
+    const baseEndpoint = (CONFIG.FORMSUBMIT_ENDPOINT || "https://formsubmit.co/").replace(/\/+$/, "");
+    form.action = `${baseEndpoint}/${CONFIG.CAREERS_EMAIL}`;
   }
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  // Check for successful submission redirect on careers form
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get("submitted") === "true") {
+    showAlert(
+      alertContainer,
+      "Thank you for applying! Your application and resume have been submitted successfully.",
+      "success"
+    );
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
 
+  // Initialize Dropzone if present
+  initDropzone(form);
+
+  form.addEventListener("submit", async (e) => {
     // Reset error indicators & alert message
     clearErrors(form);
     hideAlert(alertContainer);
 
     // 1. Client-Side Honeypot & Input Validation
-    const botCheck = form.querySelector('input[name="botcheck"]');
-    if (botCheck && botCheck.checked) {
+    const botCheck = form.querySelector('input[name="botcheck"]') || form.querySelector('input[name="_honey"]');
+    if (botCheck && (botCheck.checked || (botCheck.type === "text" && botCheck.value.trim() !== ""))) {
+      e.preventDefault();
       console.warn("Spambot detected via honeypot field. Submission dropped.");
       form.reset();
       return;
@@ -53,19 +50,36 @@ export function initFormHandler() {
 
     const isValid = validateForm(form, isCareersForm);
     if (!isValid) {
+      e.preventDefault();
       showAlert(alertContainer, "Please correct the highlighted fields before submitting.", "error");
       return;
     }
 
-    // 2. Set UI Loading State
-    setLoadingState(true, submitBtn, btnText, btnSpinner, isCareersForm);
+    if (isCareersForm) {
+      // Standard multipart/form-data POST to FormSubmit.co is required for file attachments
+      const baseEndpoint = (CONFIG.FORMSUBMIT_ENDPOINT || "https://formsubmit.co/").replace(/\/+$/, "");
+      form.action = `${baseEndpoint}/${CONFIG.CAREERS_EMAIL}`;
+      form.method = "POST";
+      form.enctype = "multipart/form-data";
+
+      const nextInput = form.querySelector("#formsubmit-next");
+      if (nextInput) {
+        nextInput.value = `${window.location.origin}${window.location.pathname}?submitted=true`;
+      }
+
+      setLoadingState(true, submitBtn, btnText, btnSpinner, true);
+      // Native POST submission proceeds with the binary PDF attachment
+      return;
+    }
+
+    // 2. Appointment Form: Live Web3Forms AJAX Dispatch
+    e.preventDefault();
+    setLoadingState(true, submitBtn, btnText, btnSpinner, false);
 
     try {
-      // 3. Live Web3Forms Dispatch
+      // Live Web3Forms Dispatch for Appointment Form
       const formData = new FormData(form);
-      const accessKey =
-        form.querySelector('input[name="access_key"]')?.value ||
-        (isCareersForm ? CONFIG.WEB3FORMS_CAREERS_KEY : CONFIG.WEB3FORMS_ACCESS_KEY);
+      const accessKey = form.querySelector('input[name="access_key"]')?.value || CONFIG.WEB3FORMS_ACCESS_KEY;
       formData.set("access_key", accessKey);
 
       const response = await fetch(CONFIG.WEB3FORMS_ENDPOINT, {
@@ -80,27 +94,12 @@ export function initFormHandler() {
         result = await response.json();
       } else {
         const responseText = await response.text();
-        if (responseText.includes("Pro feature") || responseText.includes("upgrade")) {
-          result = {
-            success: false,
-            message:
-              "File uploads require a Web3Forms Pro subscription. Please provide a Google Drive / LinkedIn resume link instead."
-          };
-        } else {
-          result = { success: false, message: `Submission error (Status ${response.status}).` };
-        }
+        result = { success: false, message: responseText || `Submission error (Status ${response.status}).` };
       }
 
       if (response.ok && result.success) {
-        const successMsg = isCareersForm
-          ? "Thank you for applying! Your application has been submitted successfully."
-          : "Thank you! Your appointment request has been submitted successfully.";
-        showAlert(alertContainer, successMsg, "success");
+        showAlert(alertContainer, "Thank you! Your appointment request has been submitted successfully.", "success");
         form.reset();
-        if (helpBtn && helpGuide) {
-          helpBtn.setAttribute("aria-expanded", "false");
-          helpGuide.classList.add("u-hidden");
-        }
       } else {
         showAlert(alertContainer, result.message || "Web3Forms submission error. Please try again.", "error");
       }
@@ -117,12 +116,139 @@ export function initFormHandler() {
   });
 }
 
+/**
+ * Sets up drag-and-drop, file selection feedback, and file removal for the PDF resume uploader.
+ */
+function initDropzone(form) {
+  const dropzone = form.querySelector("#file-dropzone");
+  const fileInput = form.querySelector("#resume");
+  const defaultView = form.querySelector("#dropzone-default");
+  const selectedView = form.querySelector("#file-selected-card");
+  const fileNameDisplay = form.querySelector("#file-name-display");
+  const fileSizeDisplay = form.querySelector("#file-size-display");
+  const removeBtn = form.querySelector("#file-remove-btn");
+  const errorResume = form.querySelector("#error-resume");
+
+  if (!dropzone || !fileInput) return;
+
+  function updateFileView(file) {
+    if (file) {
+      if (fileNameDisplay) fileNameDisplay.textContent = file.name;
+      if (fileSizeDisplay) fileSizeDisplay.textContent = formatBytes(file.size);
+      if (defaultView) defaultView.classList.add("u-hidden");
+      if (selectedView) selectedView.classList.remove("u-hidden");
+      dropzone.classList.remove("invalid");
+      fileInput.classList.remove("invalid");
+      dropzone.classList.add("has-file");
+    } else {
+      fileInput.value = "";
+      if (defaultView) defaultView.classList.remove("u-hidden");
+      if (selectedView) selectedView.classList.add("u-hidden");
+      dropzone.classList.remove("has-file");
+    }
+  }
+
+  // Dropzone click opens native file dialog
+  dropzone.addEventListener("click", (e) => {
+    if (e.target.closest("#file-remove-btn")) return;
+    fileInput.click();
+  });
+
+  // Keyboard accessibility
+  dropzone.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      if (!e.target.closest("#file-remove-btn")) {
+        fileInput.click();
+      }
+    }
+  });
+
+  // File input change
+  fileInput.addEventListener("change", () => {
+    const file = fileInput.files && fileInput.files[0];
+    if (file) {
+      const isPdf = file.name.toLowerCase().endsWith(".pdf") || file.type === "application/pdf";
+      const isValidSize = file.size <= CONFIG.VALIDATION.MAX_FILE_SIZE_BYTES;
+
+      if (!isPdf) {
+        dropzone.classList.add("invalid");
+        if (errorResume) {
+          errorResume.textContent = "Only PDF files are accepted. Please choose a .pdf document.";
+          errorResume.style.display = "block";
+        }
+        updateFileView(null);
+        return;
+      }
+      if (!isValidSize) {
+        dropzone.classList.add("invalid");
+        if (errorResume) {
+          errorResume.textContent = "File exceeds the 10MB limit. Please upload a smaller PDF.";
+          errorResume.style.display = "block";
+        }
+        updateFileView(null);
+        return;
+      }
+      if (errorResume) errorResume.style.display = "";
+      updateFileView(file);
+    } else {
+      updateFileView(null);
+    }
+  });
+
+  // Remove selected file button
+  if (removeBtn) {
+    removeBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      updateFileView(null);
+    });
+  }
+
+  // Drag and drop event listeners
+  ["dragenter", "dragover"].forEach((eventName) => {
+    dropzone.addEventListener(eventName, (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      dropzone.classList.add("drag-over");
+    });
+  });
+
+  ["dragleave", "drop"].forEach((eventName) => {
+    dropzone.addEventListener(eventName, (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      dropzone.classList.remove("drag-over");
+    });
+  });
+
+  dropzone.addEventListener("drop", (e) => {
+    if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      fileInput.files = e.dataTransfer.files;
+      fileInput.dispatchEvent(new Event("change", { bubbles: true }));
+    }
+  });
+}
+
+function formatBytes(bytes) {
+  if (bytes === 0) return "0 Bytes";
+  const k = 1024;
+  const sizes = ["Bytes", "KB", "MB"];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + " " + sizes[i];
+}
+
 function setLoadingState(isLoading, submitBtn, btnText, btnSpinner, isCareers) {
   if (!submitBtn || !btnText || !btnSpinner) return;
   if (isLoading) {
-    submitBtn.disabled = true;
     btnText.textContent = isCareers ? "Submitting Application..." : "Sending Message...";
     btnSpinner.style.display = "inline-block";
+    if (isCareers) {
+      setTimeout(() => {
+        submitBtn.disabled = true;
+      }, 50);
+    } else {
+      submitBtn.disabled = true;
+    }
   } else {
     submitBtn.disabled = false;
     btnText.textContent = isCareers ? "Submit Application" : "Send Message";

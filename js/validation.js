@@ -45,16 +45,28 @@ export function validateForm(form, checkResume) {
 
   // PDF Resume Check (if file input exists)
   if (checkResume && resumeInput) {
+    const errorResume = form.querySelector("#error-resume");
+    const dropzone = form.querySelector("#file-dropzone");
     const file = resumeInput.files ? resumeInput.files[0] : null;
+
     if (!file) {
       markInvalid(resumeInput);
+      if (dropzone) markInvalid(dropzone);
+      if (errorResume) errorResume.textContent = "Please upload your resume in PDF format.";
       valid = false;
     } else {
       const isPdf = file.name.toLowerCase().endsWith(".pdf") || file.type === "application/pdf";
       const isValidSize = file.size <= CONFIG.VALIDATION.MAX_FILE_SIZE_BYTES;
 
-      if (!isPdf || !isValidSize) {
+      if (!isPdf) {
         markInvalid(resumeInput);
+        if (dropzone) markInvalid(dropzone);
+        if (errorResume) errorResume.textContent = "Only PDF files are accepted. Please choose a .pdf document.";
+        valid = false;
+      } else if (!isValidSize) {
+        markInvalid(resumeInput);
+        if (dropzone) markInvalid(dropzone);
+        if (errorResume) errorResume.textContent = "File exceeds the 10MB limit. Please upload a smaller PDF.";
         valid = false;
       }
     }

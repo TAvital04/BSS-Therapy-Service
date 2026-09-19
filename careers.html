@@ -20,7 +20,7 @@
     <meta property="og:title" content="Careers & Employment | Bett-r Support and Service" />
     <meta
       property="og:description"
-      content="Apply for therapy careers at Bett-r Support and Service. Upload your resume link today."
+      content="Apply for therapy careers at Bett-r Support and Service. Upload your resume today."
     />
     <meta property="og:image" content="https://bsstherapyservice.com/assets/images/hero/hero_community_booth.webp" />
     <meta property="og:url" content="https://bsstherapyservice.com/careers" />
@@ -72,14 +72,16 @@
         </div>
 
         <div class="form-card-wrapper" id="form-card-wrapper">
-          <form class="appointment-form" id="careers-form" enctype="multipart/form-data" novalidate>
-            <!-- Web3Forms Configuration -->
-            <input type="hidden" name="access_key" value="fff888c6-1c17-44f7-8113-c395d9a96034" />
-            <input type="hidden" name="from_name" value="Bett-r Support and Service Careers Application" />
-            <input type="hidden" name="subject" value="New Employment Application - Bett-r Support and Service" />
+          <form class="appointment-form" id="careers-form" method="POST" enctype="multipart/form-data" novalidate>
+            <!-- Form Configuration -->
+            <input type="hidden" name="_subject" value="New Employment Application - Bett-r Support and Service" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" id="formsubmit-next" value="" />
 
-            <!-- Invisible Honeypot Field -->
+            <!-- Invisible Honeypot Fields -->
             <input type="checkbox" name="botcheck" class="u-hidden" aria-hidden="true" tabindex="-1" />
+            <input type="text" name="_honey" class="u-hidden" aria-hidden="true" tabindex="-1" />
 
             <div class="form-grid">
               <!-- First Name -->
@@ -182,94 +184,65 @@
                 <span class="error-msg" id="error-service" role="alert">Please select a specialty.</span>
               </div>
 
-              <!-- Resume Link Input with Google Drive Help Guide -->
+              <!-- Resume PDF Upload Dropzone -->
               <div class="form-group full-width" id="resume-group">
-                <div class="form-label-row">
-                  <label for="resume_link" class="form-label">Resume Link (Google Drive, LinkedIn, or Dropbox) *</label>
-                  <button
-                    type="button"
-                    class="help-pill-btn"
-                    id="resume-help-btn"
-                    aria-expanded="false"
-                    aria-controls="resume-help-guide"
-                  >
-                    <svg
-                      class="help-icon"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      width="15"
-                      height="15"
-                      aria-hidden="true"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                    <span>How to share via Google Drive?</span>
-                  </button>
-                </div>
-
-                <!-- Google Drive Instructions Drawer -->
-                <div
-                  class="help-guide-card u-hidden"
-                  id="resume-help-guide"
-                  role="region"
-                  aria-label="How to make your resume a shareable Google Drive link"
-                >
-                  <div class="help-guide-header">
-                    <span class="help-guide-title">How to share your resume with a link:</span>
-                    <button
-                      type="button"
-                      class="help-guide-close"
-                      id="resume-help-close"
-                      aria-label="Close instructions"
-                    >
-                      &times;
+                <label for="resume" class="form-label" id="resume-label">Resume / CV (PDF format, max 10MB) *</label>
+                <div class="file-dropzone" id="file-dropzone" role="button" tabindex="0" aria-labelledby="resume-label">
+                  <input
+                    type="file"
+                    id="resume"
+                    name="attachment"
+                    class="file-input-hidden"
+                    accept=".pdf,application/pdf"
+                    required
+                    aria-describedby="error-resume resume-help-text"
+                  />
+                  <div class="file-dropzone-content" id="dropzone-default">
+                    <div class="upload-icon-circle">
+                      <svg
+                        class="upload-icon"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="17 8 12 3 7 8" />
+                        <line x1="12" y1="3" x2="12" y2="15" />
+                      </svg>
+                    </div>
+                    <p class="dropzone-title"><strong>Click to upload</strong> or drag and drop your resume</p>
+                    <p class="dropzone-subtitle" id="resume-help-text">PDF format only (up to 10MB)</p>
+                  </div>
+                  <div class="file-selected-card u-hidden" id="file-selected-card">
+                    <div class="file-info-col">
+                      <svg class="pdf-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path
+                          d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9.5 8.5h-2v1h2c.28 0 .5-.22.5-.5s-.22-.5-.5-.5zm5.5 0h-2v3h2c.28 0 .5-.22.5-.5v-2c0-.28-.22-.5-.5-.5zM6 9h3.5c1.1 0 2 .9 2 2s-.9 2-2 2H7.5v2H6V9zm7 0h3.5c1.1 0 2 .9 2 2v2c0 1.1-.9 2-2 2H13V9z"
+                        />
+                      </svg>
+                      <div class="file-meta">
+                        <span class="file-name" id="file-name-display">resume.pdf</span>
+                        <span class="file-size" id="file-size-display">0 KB</span>
+                      </div>
+                    </div>
+                    <button type="button" class="file-remove-btn" id="file-remove-btn" aria-label="Remove selected PDF">
+                      <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16" aria-hidden="true">
+                        <path
+                          fill-rule="evenodd"
+                          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                      <span>Remove</span>
                     </button>
                   </div>
-                  <ol class="help-guide-steps">
-                    <li>
-                      <strong>Upload:</strong> Go to
-                      <a href="https://drive.google.com" target="_blank" rel="noopener noreferrer">Google Drive</a> and
-                      upload your resume (PDF or Word document).
-                    </li>
-                    <li>
-                      <strong>Share:</strong> Right-click your resume file and click <strong>Share</strong> &rarr;
-                      <strong>Share</strong>.
-                    </li>
-                    <li>
-                      <strong>Make Public:</strong> Under <em>General access</em>, change
-                      <em>&ldquo;Restricted&rdquo;</em> to <strong>&ldquo;Anyone with the link&rdquo;</strong> (ensure
-                      role is set to <em>Viewer</em>).
-                    </li>
-                    <li>
-                      <strong>Copy &amp; Paste:</strong> Click <strong>&ldquo;Copy link&rdquo;</strong> and paste the
-                      link in the field below.
-                    </li>
-                  </ol>
-                  <p class="help-guide-tip">
-                    <strong>Tip:</strong> Viewable links from LinkedIn, Dropbox, or OneDrive are also welcome!
-                  </p>
                 </div>
-
-                <input
-                  type="url"
-                  id="resume_link"
-                  name="resume_link"
-                  class="form-input"
-                  required
-                  autocomplete="off"
-                  placeholder="https://drive.google.com/... or LinkedIn profile URL"
-                  aria-describedby="resume-link-help error-resume-link"
-                />
-                <span class="help-text" id="resume-link-help"
-                  >Share a viewable link to your resume (Google Drive, LinkedIn, Dropbox, etc.). Make sure permissions
-                  are set to "Anyone with the link can view".</span
-                >
-                <span class="error-msg" id="error-resume-link" role="alert"
-                  >Please provide a valid resume link URL.</span
+                <span class="error-msg" id="error-resume" role="alert"
+                  >Please upload your resume in PDF format (under 10MB).</span
                 >
               </div>
 
