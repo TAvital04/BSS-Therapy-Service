@@ -339,13 +339,20 @@
         </div>
 
         <div class="form-card-wrapper" id="form-card-wrapper">
-          <form class="appointment-form" id="appointment-form" novalidate>
-            <!-- Web3Forms Configuration -->
-            <input type="hidden" name="access_key" value="b4e445ae-e0fe-4925-86b0-100c84a08bd2" />
-            <input type="hidden" name="from_name" value="Bett-r Support and Service Appointment Request" />
-            <input type="hidden" name="subject" value="Client Email from the Website" />
-            <!-- Invisible Honeypot Field -->
+          <form
+            class="appointment-form"
+            id="appointment-form"
+            method="POST"
+            novalidate
+          >
+            <!-- Form Configuration -->
+            <input type="hidden" name="_subject" value="New Appointment Request - Bett-r Support and Service" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+
+            <!-- Invisible Honeypot Fields -->
             <input type="checkbox" name="botcheck" class="u-hidden" aria-hidden="true" tabindex="-1" />
+            <input type="text" name="_honey" class="u-hidden" aria-hidden="true" tabindex="-1" />
 
             <div class="form-grid">
               <!-- First Name -->

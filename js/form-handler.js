@@ -15,9 +15,12 @@ export function initFormHandler() {
 
   const isCareersForm = form.id === "careers-form";
 
-  if (isCareersForm) {
-    const baseEndpoint = (CONFIG.FORMSUBMIT_ENDPOINT || "https://formsubmit.co/").replace(/\/+$/, "");
-    form.action = `${baseEndpoint}/${CONFIG.CAREERS_EMAIL}`;
+  const baseEndpoint = (CONFIG.FORMSUBMIT_ENDPOINT || "https://formsubmit.co/").replace(/\/+$/, "");
+  const accessKey = (CONFIG.ACCESS_KEY || "").trim();
+
+  // Set action attribute on form if access key is present
+  if (accessKey) {
+    form.action = `${baseEndpoint}/${accessKey}`;
   }
 
   // Check for successful submission redirect on careers form
@@ -25,7 +28,9 @@ export function initFormHandler() {
   if (urlParams.get("submitted") === "true") {
     showAlert(
       alertContainer,
-      "Thank you for applying! Your application and resume have been submitted successfully.",
+      isCareersForm
+        ? "Thank you for applying! Your application and resume have been submitted successfully."
+        : "Thank you! Your appointment request has been submitted successfully.",
       "success"
     );
     window.history.replaceState({}, document.title, window.location.pathname);
@@ -55,10 +60,19 @@ export function initFormHandler() {
       return;
     }
 
+    if (!accessKey) {
+      e.preventDefault();
+      showAlert(
+        alertContainer,
+        "Form submission is not configured yet. Please provide an access key in your environment configuration.",
+        "error"
+      );
+      return;
+    }
+
     if (isCareersForm) {
       // Standard multipart/form-data POST to FormSubmit.co is required for file attachments
-      const baseEndpoint = (CONFIG.FORMSUBMIT_ENDPOINT || "https://formsubmit.co/").replace(/\/+$/, "");
-      form.action = `${baseEndpoint}/${CONFIG.CAREERS_EMAIL}`;
+      form.action = `${baseEndpoint}/${accessKey}`;
       form.method = "POST";
       form.enctype = "multipart/form-data";
 
@@ -72,18 +86,18 @@ export function initFormHandler() {
       return;
     }
 
-    // 2. Appointment Form: Live Web3Forms AJAX Dispatch
+    // 2. Appointment Form: Live FormSubmit.co AJAX Dispatch
     e.preventDefault();
     setLoadingState(true, submitBtn, btnText, btnSpinner, false);
 
     try {
-      // Live Web3Forms Dispatch for Appointment Form
       const formData = new FormData(form);
-      const accessKey = form.querySelector('input[name="access_key"]')?.value || CONFIG.WEB3FORMS_ACCESS_KEY;
-      formData.set("access_key", accessKey);
 
-      const response = await fetch(CONFIG.WEB3FORMS_ENDPOINT, {
+      const response = await fetch(`${baseEndpoint}/ajax/${accessKey}`, {
         method: "POST",
+        headers: {
+          Accept: "application/json"
+        },
         body: formData
       });
 
@@ -97,11 +111,11 @@ export function initFormHandler() {
         result = { success: false, message: responseText || `Submission error (Status ${response.status}).` };
       }
 
-      if (response.ok && result.success) {
+      if (response.ok && (result.success === "true" || result.success === true)) {
         showAlert(alertContainer, "Thank you! Your appointment request has been submitted successfully.", "success");
         form.reset();
       } else {
-        showAlert(alertContainer, result.message || "Web3Forms submission error. Please try again.", "error");
+        showAlert(alertContainer, result.message || "FormSubmit submission error. Please try again.", "error");
       }
     } catch (error) {
       console.error("Form submission error:", error);
@@ -111,7 +125,7 @@ export function initFormHandler() {
         "error"
       );
     } finally {
-      setLoadingState(false, submitBtn, btnText, btnSpinner, isCareersForm);
+      setLoadingState(false, submitBtn, btnText, btnSpinner, false);
     }
   });
 }

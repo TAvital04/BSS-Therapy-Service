@@ -13,7 +13,7 @@ bss-therapy-service/
 ├── index.html                 # Core homepage HTML5 markup with appointment form
 ├── careers.html               # Dedicated Careers & Employment application page (PDF resume upload)
 ├── styles.css                 # Modular CSS stylesheet (Design Tokens, Cards, Forms, File Uploads)
-├── script.js                  # Multi-page form validation, PDF check & Web3Forms integration
+├── script.js                  # Multi-page form validation & FormSubmit integration
 ├── CNAME                      # GitHub Pages custom domain configuration
 ├── .nojekyll                  # Jekyll build bypass file for GitHub Pages
 ├── README.md                  # Developer documentation & deployment guide
@@ -33,10 +33,10 @@ bss-therapy-service/
 ## 📄 Pages Overview
 
 1. **Homepage ([`index.html`](file:///c:/Users/talav/Documents/Github/Orly/index.html)):**
-   - Main clinic overview, 5 square service cards, location cards, insurance logos, appointment form, emergency banner, and footer.
+   - Main clinic overview, 5 square service cards, location cards, insurance logos, appointment form (with FormSubmit AJAX), emergency banner, and footer.
 2. **Careers Application ([`careers.html`](file:///c:/Users/talav/Documents/Github/Orly/careers.html)):**
-   - Dedicated application form featuring all standard fields plus a PDF resume file upload (`max 5MB`).
-   - Dispatches PDF attachments directly to your inbox via Web3Forms.
+   - Dedicated application form featuring all standard fields plus a PDF resume file upload (`max 10MB`).
+   - Dispatches PDF attachments directly to your inbox via FormSubmit.co.
 
 ---
 

@@ -1,6 +1,6 @@
 # Bett-r Support and Service Website
 
-Production-ready, modern static website built for **Bett-r Support and Service** and configured for deployment on **GitHub Pages** with custom domain support and Web3Forms contact form integration.
+Production-ready, modern static website built for **Bett-r Support and Service** and configured for deployment on **GitHub Pages** with custom domain support and FormSubmit.co integration.
 
 ---
 
@@ -10,7 +10,7 @@ Production-ready, modern static website built for **Bett-r Support and Service**
 bss-therapy-service/
 ├── index.html                 # Core HTML5 semantic page structure
 ├── styles.css                 # Custom CSS stylesheet with design tokens
-├── script.js                  # Client-side form validation & Web3Forms integration
+├── script.js                  # Client-side form validation & FormSubmit integration
 ├── CNAME                      # Custom domain configuration (example.com)
 ├── .nojekyll                  # Bypass Jekyll processing on GitHub Pages
 ├── README.md                  # Setup & deployment documentation
@@ -27,23 +27,15 @@ bss-therapy-service/
 
 ---
 
-## 📧 Email Setup (Web3Forms - Zero OAuth Required)
+## 📧 Email Setup (FormSubmit.co - Zero Access Keys Required)
 
-Contact form submissions are handled by **Web3Forms**, delivering messages directly to your inbox with automatic **`Reply-To`** routing. When you click **Reply** in Outlook or Gmail, your response goes directly to the patient's email.
+Both the **Appointment Form** and **Careers Application Form** are handled by **FormSubmit.co**, delivering messages and PDF attachments directly to your inbox with automatic **`Reply-To`** routing.
 
-### Setup Steps (Takes 1 Minute):
-
-1. Visit [web3forms.com](https://web3forms.com) and type your receiving email address to get a free **Access Key**.
-2. Open [`script.js`](file:///c:/Users/talav/Documents/Github/Orly/script.js) and paste your key into `WEB3FORMS_ACCESS_KEY`:
-   ```javascript
-   const WEB3FORMS_ACCESS_KEY = "your-actual-access-key-here";
-   ```
-3. (Optional) You can also paste it into the hidden input in `index.html`:
-   ```html
-   <input type="hidden" name="access_key" value="your-actual-access-key-here" />
-   ```
-
-That's it! No passwords, OAuth linking, or server backends required.
+- **Zero Access Keys:** No API keys or account registration required.
+- **PDF Upload Support:** Free file attachment support up to 10MB on Careers applications.
+- **Live In-Page Dispatch:** Appointment requests use FormSubmit AJAX for instant, seamless confirmation without leaving the page.
+- **Recipient Email:** Configured via `VITE_FORMSUBMIT_EMAIL` in `.env` (defaults to `behaviorbalance20@gmail.com`).
+- **One-Time Activation:** The first time a submission is received at a new email address, FormSubmit sends an activation link to that inbox to confirm receiving messages.
 
 ---
 
