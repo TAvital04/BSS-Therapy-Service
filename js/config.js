@@ -4,11 +4,7 @@
 export const CONFIG = {
   // FormSubmit.co Configuration (Unified across Appointment & Careers Forms)
   FORMSUBMIT_ENDPOINT: import.meta.env?.VITE_FORMSUBMIT_ENDPOINT || "https://formsubmit.co/",
-  ACCESS_KEY: (
-    import.meta.env?.VITE_ACCESS_KEY ||
-    import.meta.env?.VITE_FORMSUBMIT_KEY ||
-    ""
-  ).split("#")[0].trim(),
+  ACCESS_KEY: (import.meta.env?.VITE_ACCESS_KEY || import.meta.env?.VITE_FORMSUBMIT_KEY || "").split("#")[0].trim(),
 
   VALIDATION: {
     MAX_FILE_SIZE_BYTES: 10 * 1024 * 1024, // 10MB FormSubmit limit
