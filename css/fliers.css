@@ -1,9 +1,9 @@
 /* ==========================================================================
-   BETT-R SUPPORT AND SERVICE - FLIERS & PRINTABLE BROCHURES STYLESHEET
+   BETT-R SUPPORT AND SERVICE - INSTAGRAM AD VISUALS & CREATIVES STYLESHEET
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   FLIER DIRECTORY / HUB STYLES (fliers/index.html)
+   AD VISUALS HUB / DIRECTORY STYLES (fliers/index.html & fliers.html)
    -------------------------------------------------------------------------- */
 
 .fliers-hub-hero {
@@ -48,7 +48,7 @@
 .fliers-hub-subtitle {
   font-size: 1.1rem;
   color: #334155;
-  max-width: 680px;
+  max-width: 700px;
   margin: 0 auto var(--space-lg);
   line-height: 1.5;
 }
@@ -106,7 +106,7 @@
   color: #ffffff;
 }
 
-/* Fliers Grid */
+/* Ads Showcase Grid */
 .fliers-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -114,7 +114,6 @@
   margin-bottom: var(--space-3xl);
 }
 
-/* Flier Card Showcase */
 .flier-card {
   background: #ffffff;
   border-radius: var(--radius-card);
@@ -135,34 +134,22 @@
   box-shadow: var(--shadow-lg);
 }
 
-/* Card Themes */
-.flier-card.theme-cyan {
-  border-color: var(--card-cyan-border);
-}
+.flier-card.theme-cyan { border-color: var(--card-cyan-border); }
 .flier-card.theme-cyan .flier-card-header {
   background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
   border-bottom: 2px solid var(--card-cyan-border);
 }
-
-.flier-card.theme-yellow {
-  border-color: var(--card-yellow-border);
-}
+.flier-card.theme-yellow { border-color: var(--card-yellow-border); }
 .flier-card.theme-yellow .flier-card-header {
   background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
   border-bottom: 2px solid var(--card-yellow-border);
 }
-
-.flier-card.theme-pink {
-  border-color: var(--card-pink-border);
-}
+.flier-card.theme-pink { border-color: var(--card-pink-border); }
 .flier-card.theme-pink .flier-card-header {
   background: linear-gradient(135deg, #ffe4e6 0%, #fecdd3 100%);
   border-bottom: 2px solid var(--card-pink-border);
 }
-
-.flier-card.theme-blue {
-  border-color: var(--banner-border);
-}
+.flier-card.theme-blue { border-color: var(--banner-border); }
 .flier-card.theme-blue .flier-card-header {
   background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
   border-bottom: 2px solid var(--banner-border);
@@ -188,6 +175,20 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 }
 
+.flier-format-tags {
+  display: flex;
+  gap: 6px;
+}
+
+.flier-format-tag {
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background-color: #0f172a;
+  color: #ffffff;
+}
+
 .flier-card-preview {
   position: relative;
   height: 200px;
@@ -209,7 +210,7 @@
 .flier-card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(15, 23, 42, 0.75) 0%, transparent 60%);
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.8) 0%, transparent 60%);
   display: flex;
   align-items: flex-end;
   padding: var(--space-md) var(--space-lg);
@@ -218,7 +219,7 @@
 .flier-card-overlay-text {
   color: #ffffff;
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .flier-card-body {
@@ -252,33 +253,34 @@
   margin-bottom: var(--space-lg);
 }
 
-.flier-highlight-pill {
-  font-size: 0.78rem;
+.flier-highlight-chip {
+  font-size: 0.75rem;
   font-weight: 700;
+  color: #1e3a8a;
+  background-color: #dbeafe;
   padding: 4px 10px;
-  border-radius: 6px;
-  background-color: #f1f5f9;
-  color: #334155;
-  border: 1px solid #e2e8f0;
+  border-radius: 12px;
 }
 
 .flier-card-actions {
   display: flex;
-  gap: 10px;
+  gap: 8px;
+  border-top: 1px solid #f1f5f9;
+  padding-top: var(--space-md);
   margin-top: auto;
 }
 
 .flier-btn-view {
   flex: 1;
-  text-align: center;
   font-family: var(--font-heading);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 800;
-  padding: 10px 16px;
+  padding: 8px 12px;
   border-radius: var(--radius-btn);
   background-color: var(--primary-blue);
   color: #ffffff;
   text-decoration: none;
+  text-align: center;
   transition: var(--transition-fast);
   display: inline-flex;
   align-items: center;
@@ -288,15 +290,15 @@
 
 .flier-btn-view:hover {
   background-color: #1d4ed8;
+  color: #ffffff;
   transform: translateY(-1px);
 }
 
 .flier-btn-print {
-  text-align: center;
   font-family: var(--font-heading);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 700;
-  padding: 10px 14px;
+  padding: 8px 12px;
   border-radius: var(--radius-btn);
   background-color: #f1f5f9;
   color: #334155;
@@ -315,72 +317,243 @@
   color: var(--primary-dark);
 }
 
-/* Referral & Partner Callout */
-.provider-referral-banner {
-  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-  color: #ffffff;
-  border-radius: var(--radius-card);
-  padding: var(--space-xl);
-  margin-bottom: var(--space-3xl);
+/* --------------------------------------------------------------------------
+   DEDICATED INSTAGRAM AD VISUAL VIEWER PAGE (SIMPLE WHITE BACKGROUND)
+   -------------------------------------------------------------------------- */
+
+.ad-viewport-bg {
+  background: #ffffff;
+  min-height: 100vh;
+  padding: 24px 20px 80px;
+  color: #0f172a;
+}
+
+.ad-simple-nav {
+  max-width: 1000px;
+  margin: 0 auto 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ad-simple-back {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #475569;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background-color: #f1f5f9;
+  transition: var(--transition-fast);
+}
+
+.ad-simple-back:hover {
+  background-color: #e2e8f0;
+  color: #0f172a;
+}
+
+.ad-simple-list {
+  max-width: 1000px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
-  box-shadow: var(--shadow-md);
+  gap: 48px;
 }
 
-@media (min-width: 768px) {
-  .provider-referral-banner {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-}
-
-.provider-referral-content h3 {
-  font-family: var(--font-heading);
-  font-size: 1.4rem;
-  font-weight: 800;
-  margin-bottom: var(--space-xs);
-  color: #ffffff;
-}
-
-.provider-referral-content p {
-  font-size: 0.95rem;
-  color: #cbd5e1;
-  max-width: 580px;
-  line-height: 1.5;
-}
-
-.provider-referral-actions {
+.ad-simple-item {
   display: flex;
-  gap: 12px;
-  flex-shrink: 0;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ad-simple-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #1e293b;
+  border-bottom: 1.5px solid #e2e8f0;
+  padding-bottom: 8px;
+  margin: 0;
+}
+
+.ad-simple-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 24px;
   flex-wrap: wrap;
 }
 
-/* --------------------------------------------------------------------------
-   DEDICATED FLIER PAGE & DOCUMENT VIEW (Screen & Print)
-   -------------------------------------------------------------------------- */
-
-.flier-viewport-bg {
-  background: #f1f5f9;
-  min-height: 100vh;
-  padding: 0 0 var(--space-3xl) 0;
+/* Minimalist Clean Visual Cards */
+/* Minimalist Clean Visual Cards */
+.ad-card-square {
+  width: 100%;
+  max-width: 520px;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  box-sizing: border-box;
 }
 
-/* Floating Flier Control Toolbar */
-.flier-toolbar {
-  background-color: #ffffff;
-  border-bottom: 1px solid #e2e8f0;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.08);
-  padding: 10px 16px;
+.ad-card-split-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
 }
 
-.flier-toolbar-container {
-  max-width: 900px;
+.ad-card-split-media {
+  flex: 0 0 46%;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f8fafc;
+}
+
+.ad-card-split-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.ad-card-split-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.ad-card-vertical {
+  width: 100%;
+  max-width: 330px;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  box-sizing: border-box;
+}
+
+.ad-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 8px;
+  flex-shrink: 0;
+}
+
+.ad-card-logo-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ad-card-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid #e2e8f0;
+}
+
+.ad-card-brand-title {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.1;
+}
+
+.ad-card-format-tag {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #2563eb;
+  background: #dbeafe;
+  padding: 3px 8px;
+  border-radius: 8px;
+}
+
+.ad-card-media {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f8fafc;
+  flex-shrink: 0;
+}
+
+.ad-card-vertical .ad-card-media {
+  height: 235px;
+}
+
+.ad-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.ad-stuff-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.ad-stuff-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #1e293b;
+  line-height: 1.3;
+}
+
+.ad-stuff-item span:first-child {
+  color: #10b981;
+  font-weight: 900;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.ad-card-footer {
+  border-top: 1px solid #f1f5f9;
+  padding-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: #475569;
+  flex-shrink: 0;
+}
+
+.ad-toolbar-container {
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
@@ -389,47 +562,91 @@
   gap: 12px;
 }
 
-.flier-toolbar-nav {
+.ad-toolbar-nav {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
-.flier-toolbar-back {
+.ad-toolbar-back {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   font-family: var(--font-heading);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 800;
-  color: #475569;
+  color: #cbd5e1;
   text-decoration: none;
   padding: 6px 12px;
   border-radius: var(--radius-btn);
-  background-color: #f1f5f9;
+  background-color: #1e293b;
+  border: 1px solid #334155;
   transition: var(--transition-fast);
 }
 
-.flier-toolbar-back:hover {
-  background-color: #e2e8f0;
-  color: var(--primary-dark);
+.ad-toolbar-back:hover {
+  background-color: #334155;
+  color: #ffffff;
 }
 
-.flier-toolbar-actions {
+.ad-toolbar-title {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+/* Format Switcher (Segmented Control) */
+.format-switcher {
+  display: inline-flex;
+  background-color: #1e293b;
+  padding: 4px;
+  border-radius: 10px;
+  border: 1px solid #334155;
+  gap: 4px;
+}
+
+.format-switch-btn {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 6px 14px;
+  border-radius: 7px;
+  border: none;
+  background: transparent;
+  color: #94a3b8;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition-fast);
+}
+
+.format-switch-btn:hover {
+  color: #ffffff;
+}
+
+.format-switch-btn.active {
+  background-color: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
+}
+
+.ad-toolbar-actions {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .toolbar-btn {
   font-family: var(--font-heading);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  padding: 7px 14px;
+  padding: 7px 13px;
   border-radius: var(--radius-btn);
-  border: 1px solid #cbd5e1;
-  background-color: #ffffff;
-  color: var(--primary-dark);
+  border: 1px solid #334155;
+  background-color: #1e293b;
+  color: #e2e8f0;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -439,9 +656,21 @@
 }
 
 .toolbar-btn:hover {
-  background-color: #f8fafc;
-  border-color: #94a3b8;
+  background-color: #334155;
+  color: #ffffff;
   transform: translateY(-1px);
+}
+
+.toolbar-btn-accent {
+  background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+  border: none;
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.toolbar-btn-accent:hover {
+  opacity: 0.92;
+  box-shadow: 0 4px 14px rgba(253, 29, 29, 0.35);
 }
 
 .toolbar-btn-primary {
@@ -452,580 +681,797 @@
 
 .toolbar-btn-primary:hover {
   background-color: #1d4ed8;
-  border-color: #1d4ed8;
-  color: #ffffff;
 }
 
-/* Flier Sheet Document Layout */
-.flier-document-container {
-  max-width: 860px;
+/* --------------------------------------------------------------------------
+   AD VISUALS STAGE & CANVAS LAYOUT
+   -------------------------------------------------------------------------- */
+
+.ad-document-container {
+  max-width: 1200px;
   margin: var(--space-xl) auto 0;
   padding: 0 var(--space-md);
 }
 
-.flier-sheet {
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow:
-    0 10px 40px rgba(15, 23, 42, 0.12),
-    0 1px 3px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2e8f0;
-  overflow: hidden;
-  position: relative;
-}
-
-/* Flier Header */
-.flier-sheet-header {
-  padding: 24px 32px 18px;
-  background: #ffffff;
+.ad-visuals-stage {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 2px solid #f1f5f9;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 36px;
   flex-wrap: wrap;
-  gap: 16px;
+  margin-bottom: var(--space-3xl);
+  transition: all 0.3s ease;
 }
 
-.flier-brand-group {
+/* View Mode Toggling (Single Section & Global) */
+.ad-visuals-stage.view-feed .ad-story-wrapper,
+.ad-document-container.view-feed .ad-story-wrapper,
+body.view-feed .ad-story-wrapper {
+  display: none !important;
+}
+
+.ad-visuals-stage.view-story .ad-feed-wrapper,
+.ad-document-container.view-story .ad-feed-wrapper,
+body.view-story .ad-feed-wrapper {
+  display: none !important;
+}
+
+.ad-visuals-stage.view-all .ad-feed-wrapper,
+.ad-visuals-stage.view-all .ad-story-wrapper,
+.ad-document-container.view-all .ad-feed-wrapper,
+.ad-document-container.view-all .ad-story-wrapper {
+  display: flex;
+}
+
+/* Multi-Section Campaign Container & Quick Jump */
+.ad-quicknav {
   display: flex;
   align-items: center;
-  gap: 14px;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 12px 16px;
+  margin-bottom: var(--space-2xl);
+  background: #1e293b;
+  border-radius: 16px;
+  border: 1px solid #334155;
 }
 
-.flier-brand-logo {
-  width: 56px;
-  height: 56px;
-  border-radius: 12px;
-  border: 1.5px solid #bfdbfe;
-  padding: 4px;
-  background: #ffffff;
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
-}
-
-.flier-brand-logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.flier-company-name {
+.ad-quicknav-link {
   font-family: var(--font-heading);
-  font-size: 1.55rem;
-  font-weight: 900;
-  color: var(--primary-dark);
-  line-height: 1.15;
-}
-
-.flier-company-tagline {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #64748b;
-  letter-spacing: 0.02em;
-}
-
-.flier-header-badges {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #cbd5e1;
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  transition: var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
   gap: 6px;
 }
 
-.flier-location-badge {
+.ad-quicknav-link:hover {
+  background-color: var(--primary-blue);
+  color: #ffffff;
+  border-color: var(--primary-blue);
+  transform: translateY(-1px);
+}
+
+.ad-campaign-section {
+  scroll-margin-top: 100px;
+  margin-bottom: var(--space-4xl);
+  border-bottom: 2px dashed #334155;
+  padding-bottom: var(--space-3xl);
+}
+
+.ad-campaign-section:last-child {
+  border-bottom: none;
+  margin-bottom: var(--space-2xl);
+}
+
+.ad-campaign-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-xl);
+  padding: 14px 20px;
+  background: #1e293b;
+  border-radius: 14px;
+  border: 1px solid #334155;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.ad-campaign-heading-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ad-campaign-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--primary-blue);
+  color: #ffffff;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+}
+
+.ad-campaign-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #ffffff;
+}
+
+.ad-campaign-jump-top {
+  color: #94a3b8;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ad-campaign-jump-top:hover {
+  color: #38bdf8;
+}
+
+.ad-visual-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.ad-visual-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-family: var(--font-heading);
   font-size: 0.8rem;
   font-weight: 800;
-  color: var(--primary-royal);
-  background-color: #dbeafe;
-  padding: 4px 12px;
-  border-radius: var(--radius-btn);
-  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+  background-color: #1e293b;
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid #334155;
 }
 
-.flier-accepting-badge {
+.ad-visual-label span {
+  color: #38bdf8;
+}
+
+/* --------------------------------------------------------------------------
+   1:1 FEED AD VISUAL (SQUARE)
+   -------------------------------------------------------------------------- */
+
+.ad-feed-card {
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 1 / 1;
+  background-color: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  color: #0f172a;
+}
+
+/* Feed Top Bar */
+.ad-feed-topbar {
+  padding: 12px 18px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #f1f5f9;
+  flex-shrink: 0;
+}
+
+.ad-feed-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ad-feed-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  padding: 2px;
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ad-feed-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #ffffff;
+}
+
+.ad-feed-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.ad-feed-brand-name {
   font-family: var(--font-heading);
-  font-size: 0.75rem;
+  font-size: 0.95rem;
   font-weight: 800;
-  color: #047857;
-  background-color: #d1fae5;
-  padding: 3px 10px;
-  border-radius: var(--radius-btn);
+  color: #0f172a;
+  line-height: 1.1;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ad-feed-verified {
+  color: #2563eb;
+  display: inline-flex;
+}
+
+.ad-feed-sponsored {
+  font-size: 0.72rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.ad-feed-location-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #1e3a8a;
+  background-color: #dbeafe;
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+/* Feed Visual Main Area */
+.ad-feed-visual {
+  position: relative;
+  flex: 1 1 54%;
+  overflow: hidden;
+  background-color: #0f172a;
+  min-height: 220px;
+}
+
+.ad-feed-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ad-feed-visual-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0.2) 60%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 14px 18px;
+}
+
+.ad-feed-hook-badge {
+  align-self: flex-start;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   display: inline-flex;
   align-items: center;
   gap: 5px;
 }
 
-.flier-accepting-badge::before {
-  content: "";
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background-color: #10b981;
+.ad-feed-visual-text {
+  color: #ffffff;
 }
 
-/* Flier Hero Strip */
-.flier-hero-strip {
-  padding: 24px 32px;
-  position: relative;
-  overflow: hidden;
-}
-
-.flier-hero-strip.theme-cyan {
-  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 60%, #7dd3fc 100%);
-  border-bottom: 3px solid #38bdf8;
-}
-
-.flier-hero-strip.theme-yellow {
-  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 60%, #fcd34d 100%);
-  border-bottom: 3px solid #f59e0b;
-}
-
-.flier-hero-strip.theme-pink {
-  background: linear-gradient(135deg, #ffe4e6 0%, #fecdd3 60%, #fda4af 100%);
-  border-bottom: 3px solid #f43f5e;
-}
-
-.flier-hero-strip.theme-blue {
-  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 60%, #93c5fd 100%);
-  border-bottom: 3px solid #2563eb;
-}
-
-.flier-service-pill {
-  display: inline-block;
+.ad-feed-headline {
   font-family: var(--font-heading);
-  font-size: 0.8rem;
+  font-size: clamp(1.15rem, 3.2vw, 1.45rem);
   font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 4px 12px;
-  border-radius: var(--radius-btn);
-  background-color: rgba(255, 255, 255, 0.9);
-  color: var(--primary-dark);
-  margin-bottom: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.flier-headline {
-  font-family: var(--font-heading);
-  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
-  font-weight: 900;
-  color: var(--primary-dark);
   line-height: 1.2;
-  margin-bottom: 8px;
+  color: #ffffff;
+  margin-bottom: 4px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
-.flier-subheadline {
-  font-size: 1.05rem;
+.ad-feed-subtext {
+  font-size: 0.82rem;
   font-weight: 600;
-  color: #1e293b;
-  max-width: 680px;
-  line-height: 1.45;
+  color: #e2e8f0;
+  line-height: 1.35;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-/* Flier Body Grid */
-.flier-body-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 28px;
-  padding: 28px 32px;
-}
-
-@media (min-width: 768px) {
-  .flier-body-grid {
-    grid-template-columns: 1.35fr 1fr;
-    gap: 32px;
-  }
-}
-
-/* Left Content Column */
-.flier-main-content {
+/* Feed Bottom Content / Value Props */
+.ad-feed-content {
+  padding: 12px 18px;
+  background-color: #ffffff;
+  flex: 0 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 10px;
 }
 
-.flier-section-title {
-  font-family: var(--font-heading);
-  font-size: 1.15rem;
-  font-weight: 900;
-  color: var(--primary-dark);
-  margin-bottom: 10px;
+.ad-feed-pills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.ad-feed-pill {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #1e293b;
+  background-color: #f1f5f9;
+  padding: 5px 8px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  border-bottom: 2px solid #e2e8f0;
-  padding-bottom: 6px;
-}
-
-.flier-section-title svg {
-  color: var(--primary-blue);
-  flex-shrink: 0;
-}
-
-.flier-prose {
-  font-size: 0.95rem;
-  color: #334155;
-  line-height: 1.55;
-}
-
-/* Targeted Skills Checklist */
-.flier-skills-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 8px;
-}
-
-@media (min-width: 480px) {
-  .flier-skills-list {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.flier-skill-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #1e293b;
-  background-color: #f8fafc;
-  padding: 7px 10px;
-  border-radius: 8px;
+  gap: 6px;
   border: 1px solid #e2e8f0;
 }
 
-.flier-skill-check {
+.ad-feed-pill-check {
   color: #10b981;
   font-weight: 900;
-  font-size: 1rem;
-  line-height: 1;
+  font-size: 0.85rem;
+}
+
+/* Feed CTA Bar */
+.ad-feed-cta-bar {
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   flex-shrink: 0;
-  margin-top: 1px;
+  text-decoration: none;
 }
 
-/* Feature Callout Box */
-.flier-feature-box {
-  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-  border: 1.5px solid #86efac;
-  border-radius: 12px;
-  padding: 14px 18px;
-}
-
-.flier-feature-box-title {
-  font-family: var(--font-heading);
-  font-size: 0.95rem;
-  font-weight: 800;
-  color: #166534;
-  margin-bottom: 6px;
-}
-
-.flier-feature-box p {
-  font-size: 0.88rem;
-  color: #14532d;
-  line-height: 1.45;
-  margin: 0;
-}
-
-/* Right / Sidebar Column */
-.flier-sidebar {
+.ad-feed-cta-text {
   display: flex;
   flex-direction: column;
-  gap: 20px;
 }
 
-.flier-photo-frame {
+.ad-feed-cta-title {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+.ad-feed-cta-sub {
+  font-size: 0.7rem;
+  color: #bfdbfe;
+  font-weight: 600;
+}
+
+.ad-feed-cta-btn {
+  background-color: #ffffff;
+  color: #1e3a8a;
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 6px 14px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* --------------------------------------------------------------------------
+   9:16 STORY AD VISUAL (VERTICAL)
+   -------------------------------------------------------------------------- */
+
+.ad-story-card {
   width: 100%;
-  height: 220px;
-  border-radius: 14px;
+  max-width: 340px;
+  aspect-ratio: 9 / 16;
+  background-color: #0f172a;
+  border-radius: 20px;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.12);
   overflow: hidden;
-  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12);
-  border: 2px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
   position: relative;
+  color: #ffffff;
 }
 
-.flier-photo-frame img {
+/* Story Progress Bars */
+.ad-story-bars {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  gap: 4px;
+  z-index: 10;
+}
+
+.ad-story-bar-segment {
+  height: 2.5px;
+  flex: 1;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 2px;
+}
+
+.ad-story-bar-segment.active {
+  background: #ffffff;
+}
+
+/* Story Header */
+.ad-story-header {
+  position: absolute;
+  top: 20px;
+  left: 14px;
+  right: 14px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ad-story-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ad-story-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid #ffffff;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.ad-story-avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.flier-photo-badge {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  background: rgba(15, 23, 42, 0.85);
-  color: #ffffff;
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: var(--radius-btn);
-  backdrop-filter: blur(4px);
-}
-
-/* Service Delivery Badges */
-.flier-delivery-badges {
+.ad-story-brand-info {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
+  flex-direction: column;
 }
 
-.flier-delivery-badge {
-  font-size: 0.78rem;
-  font-weight: 800;
-  padding: 5px 10px;
-  border-radius: 6px;
-  background-color: #eff6ff;
-  color: var(--primary-royal);
-  border: 1px solid #bfdbfe;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
-
-/* Insurance Strip on Flier */
-.flier-insurance-box {
-  background-color: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  padding: 12px 14px;
-}
-
-.flier-insurance-label {
+.ad-story-handle {
   font-family: var(--font-heading);
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 800;
-  text-transform: uppercase;
-  color: #475569;
-  letter-spacing: 0.05em;
-  margin-bottom: 8px;
-  display: block;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  line-height: 1.1;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
 }
 
-.flier-insurance-logos {
+.ad-story-sponsored {
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.ad-story-dots {
+  color: #ffffff;
+  font-size: 1.1rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* Story Background & Scrim */
+.ad-story-media {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.ad-story-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ad-story-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 23, 42, 0.8) 0%,
+    rgba(15, 23, 42, 0.35) 25%,
+    rgba(15, 23, 42, 0.5) 55%,
+    rgba(15, 23, 42, 0.95) 100%
+  );
+  z-index: 2;
+}
+
+/* Story Content Layers */
+.ad-story-content {
+  position: relative;
+  z-index: 5;
+  height: 100%;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 60px 18px 20px;
+}
+
+.ad-story-tag-badge {
+  align-self: flex-start;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  margin-bottom: 8px;
+}
+
+.ad-story-headline {
+  font-family: var(--font-heading);
+  font-size: clamp(1.3rem, 5vw, 1.6rem);
+  font-weight: 900;
+  line-height: 1.2;
+  color: #ffffff;
+  margin-bottom: 12px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* Story Benefit Cards */
+.ad-story-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 16px;
+}
+
+.ad-story-benefit-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  padding: 7px 10px;
+  display: flex;
   align-items: center;
   gap: 8px;
-}
-
-.flier-ins-mini {
-  height: 28px;
-  padding: 2px 6px;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 6px;
-  object-fit: contain;
-}
-
-.flier-ins-tag {
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  color: #334155;
-  background: #ffffff;
-  border: 1px solid #cbd5e1;
-  padding: 3px 6px;
-  border-radius: 4px;
-}
-
-/* Contact / QR Action Box */
-.flier-contact-box {
-  background: linear-gradient(135deg, #1e3a8a 0%, #1e293b 100%);
   color: #ffffff;
-  border-radius: 14px;
-  padding: 16px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  box-shadow: 0 4px 14px rgba(30, 58, 138, 0.25);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-.flier-qr-wrap {
-  background-color: #ffffff;
-  padding: 6px;
-  border-radius: 10px;
+.ad-story-benefit-icon {
+  font-size: 0.95rem;
   flex-shrink: 0;
-  width: 82px;
-  height: 82px;
+}
+
+/* Story Swipe-Up / Tap Sticker */
+.ad-story-sticker-cta {
+  background: #ffffff;
+  color: #0f172a;
+  border-radius: 30px;
+  padding: 10px 16px;
+  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.flier-qr-wrap svg {
-  width: 100%;
-  height: 100%;
-}
-
-.flier-contact-info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.flier-contact-title {
-  font-family: var(--font-heading);
-  font-size: 0.95rem;
-  font-weight: 900;
-  color: #ffffff;
-}
-
-.flier-contact-item {
-  font-size: 0.8rem;
-  color: #e2e8f0;
-  display: flex;
-  align-items: center;
   gap: 6px;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 900;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
   text-decoration: none;
+  margin-bottom: 8px;
+  animation: adStickerPulse 2.4s infinite ease-in-out;
 }
 
-.flier-contact-item:hover {
-  color: #93c5fd;
+@keyframes adStickerPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); box-shadow: 0 8px 24px rgba(255, 255, 255, 0.35); }
 }
 
-.flier-scan-prompt {
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: #93c5fd;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-top: 2px;
-}
-
-/* Flier Footer Strip */
-.flier-sheet-footer {
-  background-color: #0f172a;
-  color: #ffffff;
-  padding: 12px 32px;
+.ad-story-footer-info {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 0 4px;
 }
 
-.flier-footer-left {
-  color: #94a3b8;
+/* --------------------------------------------------------------------------
+   READY-TO-POST CAPTION & HASHTAGS DRAWER
+   -------------------------------------------------------------------------- */
+
+.ad-caption-drawer {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 16px;
+  max-width: 900px;
+  margin: 0 auto var(--space-2xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
 }
 
-.flier-footer-left strong {
-  color: #ffffff;
-}
-
-.flier-footer-right {
+.ad-caption-header {
+  padding: 14px 20px;
+  background-color: #0f172a;
+  border-bottom: 1px solid #334155;
   display: flex;
   align-items: center;
-  gap: 12px;
-  color: #cbd5e1;
-  font-weight: 700;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-/* Toast Notification for Clipboard Copy */
-.flier-toast {
+.ad-caption-title {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #f8fafc;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-copy-caption {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid #38bdf8;
+  background-color: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition-fast);
+}
+
+.btn-copy-caption:hover {
+  background-color: #38bdf8;
+  color: #0f172a;
+}
+
+.ad-caption-body {
+  padding: 20px;
+  font-family: monospace, var(--font-body);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+  white-space: pre-wrap;
+  user-select: all;
+  background-color: #182234;
+}
+
+.ad-hashtags {
+  color: #38bdf8;
+  margin-top: 12px;
+  display: block;
+}
+
+/* Edit Instructions Box */
+.ad-edit-guide {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(56, 189, 248, 0.05) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 12px;
+  padding: 16px 20px;
+  max-width: 900px;
+  margin: 0 auto var(--space-3xl);
+  font-size: 0.85rem;
+  color: #94a3b8;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.ad-edit-guide strong {
+  color: #e2e8f0;
+}
+
+/* Toast Alert */
+.ad-toast {
   position: fixed;
   bottom: 24px;
   right: 24px;
   background-color: #0f172a;
   color: #ffffff;
+  border: 1px solid #38bdf8;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
   padding: 12px 20px;
-  border-radius: var(--radius-btn);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
   font-family: var(--font-heading);
   font-size: 0.9rem;
-  font-weight: 700;
+  font-weight: 800;
   z-index: 1000;
-  display: flex;
-  align-items: center;
-  gap: 8px;
   opacity: 0;
-  transform: translateY(16px);
+  transform: translateY(12px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
   pointer-events: none;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.flier-toast.show {
+.ad-toast.show {
   opacity: 1;
   transform: translateY(0);
 }
 
 /* --------------------------------------------------------------------------
-   PRINT STYLESHEET OPTIMIZATIONS (@media print)
+   PRINT / EXPORT CLEAN VISUAL STYLES
    -------------------------------------------------------------------------- */
+
 @media print {
-  /* Hide all digital UI chrome */
   .site-header,
   .site-footer,
-  .flier-toolbar,
-  .skip-link,
-  .flier-toast,
+  .ad-toolbar,
+  .ad-caption-drawer,
+  .ad-edit-guide,
+  .ad-visual-label,
   .flier-filter-tabs,
-  .fliers-hub-hero,
-  .provider-referral-banner,
-  .hero-actions,
-  .header-actions {
+  .provider-referral-banner {
     display: none !important;
   }
 
   body,
-  .flier-viewport-bg {
+  .ad-viewport-bg {
     background: #ffffff !important;
     padding: 0 !important;
-    margin: 0 !important;
   }
 
-  .flier-document-container {
+  .ad-document-container {
     max-width: 100% !important;
-    width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
   }
 
-  .flier-sheet {
+  .ad-visuals-stage {
+    gap: 20px !important;
+    margin: 0 !important;
+  }
+
+  .ad-feed-card,
+  .ad-story-card {
     box-shadow: none !important;
     border: 1px solid #cbd5e1 !important;
-    border-radius: 0 !important;
-    width: 100% !important;
-    page-break-after: avoid;
-    break-after: avoid;
-  }
-
-  /* Force background colors and gradients in print */
-  * {
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-
-  @page {
-    size: letter portrait;
-    margin: 0.35in 0.4in;
-  }
-
-  .flier-body-grid {
-    grid-template-columns: 1.35fr 1fr !important;
-    gap: 20px !important;
-    padding: 18px 24px !important;
-  }
-
-  .flier-sheet-header {
-    padding: 16px 24px 12px !important;
-  }
-
-  .flier-hero-strip {
-    padding: 16px 24px !important;
-  }
-
-  .flier-headline {
-    font-size: 1.8rem !important;
-  }
-
-  .flier-photo-frame {
-    height: 180px !important;
-  }
-
-  .flier-sheet-footer {
-    padding: 8px 24px !important;
+    page-break-inside: avoid !important;
   }
 }
