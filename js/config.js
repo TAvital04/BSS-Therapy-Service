@@ -7,7 +7,8 @@ export const CONFIG = {
   ACCESS_KEY: (
     import.meta.env?.VITE_ACCESS_KEY ||
     import.meta.env?.VITE_FORMSUBMIT_KEY ||
-    ""
+    import.meta.env?.VITE_FORMSUBMIT_EMAIL ||
+    "behaviorbalance20@gmail.com"
   ).split("#")[0].trim(),
 
   VALIDATION: {
